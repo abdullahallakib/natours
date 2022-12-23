@@ -3,16 +3,16 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 const app = require("./app");
 
-const DB = process.env.DATABASE_VS.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD
-);
+// const DB = process.env.DATABASE_VS.replace(
+//   "<PASSWORD>",
+//   process.env.DATABASE_PASSWORD
+// );
 
-const Db_LOCAL = process.env.DATABASE_LOCAL;
+// const Db_LOCAL = process.env.DATABASE_LOCAL;
 
 const DBremoteid =
   "mongodb+srv://abdullah_akib:gMMvccgyrrE0GWrb@cluster0.fggx8gu.mongodb.net/Natours?retryWrites=true&w=majority";
-const DATABASE_LOCAL = process.env.DATABASE_LOCAL;
+// const DATABASE_LOCAL = process.env.DATABASE_LOCAL;
 // console.log("\x1b[31m%s\x1b[0m", "I am red");
 // console.log("\x1b[34m%s\x1b[0m", "I am blue");
 const mongocon = async () => {
