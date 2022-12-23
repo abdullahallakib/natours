@@ -1,4 +1,4 @@
-console.log("hello from clint side ");
+
 // abdullahallakib
 // password REG-1514834882akib
 

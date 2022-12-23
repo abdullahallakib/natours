@@ -6,7 +6,7 @@ const AppError = require("../utilits/appError");
 const factory = require("./handlerFactor");
 
 // exports.getCheckoutSession = catchAsync(async (res, req, next) => {
-//   console.log("process run");
+//  
 //   const tour = await Tour.findById(req.params.id);
 //   console.log(tour);
 //   req.params.id;
@@ -106,7 +106,7 @@ const factory = require("./handlerFactor");
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   // 1) Get the currently booked tour
   const tour = await Tour.findById(req.params.tourId);
-  console.log(tour);
+ 
 
   // 2) Create checkout session
   const session = await stripe.checkout.sessions.create({

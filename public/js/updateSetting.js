@@ -5,8 +5,8 @@ export const updatedDataSetting = async (data, type) => {
   try {
     const url =
       type === "password"
-        ? "http://127.0.0.2:3000/api/v1/users/updatemyPassword"
-        : "http://127.0.0.2:3000/api/v1/users/updateme";
+        ? "/api/v1/users/updatemyPassword"
+        : "/api/v1/users/updateme";
 
     const res = await axios({
       method: "PATCH",

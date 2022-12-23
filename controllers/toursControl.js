@@ -49,12 +49,10 @@ exports.uploadTourImages = upload.fields([
 ]);
 
 exports.resizeTourImages = catchAsync(async (req, res, next) => {
-  console.log("process 01");
-  console.log(req.files.imageCover);
-  console.log(req.files.images);
+
   // || !req.files.images
   if (!req.files.imageCover || !req.files.images) return next();
-  console.log("process 2");
+ 
   req.body.imageCover = `tour-${req.params.id}-${Date.now()}-cover.jpeg`;
   await sharp(req.files.imageCover[0].buffer)
     .resize(2000, 1333)
@@ -62,7 +60,7 @@ exports.resizeTourImages = catchAsync(async (req, res, next) => {
     .jpeg({ quality: 90 })
     .toFile(`public/img/tours/${req.body.imageCover}`);
 
-    console.log('process 3');
+
   req.body.images = [];
 
   await Promise.all(
@@ -77,7 +75,7 @@ exports.resizeTourImages = catchAsync(async (req, res, next) => {
       req.body.images.push(filename);
     }))
   );
-  console.log('process 4');
+
   next();
 });
 
@@ -131,7 +129,7 @@ exports.getTourStats = catchAsync(async (req, res, next) => {
 
 exports.getMonthlyplan = catchAsync(async (req, res, next) => {
   const year = req.params.year * 1;
-  console.log(year);
+
   const plan = await Tour.aggregate([
     {
       $unwind: "$startDates",

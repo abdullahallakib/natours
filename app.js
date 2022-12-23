@@ -16,6 +16,7 @@ const xss_clean = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 const app = express();
+const compression = require("compression");
 
 // start express app
 app.set("view engine", "pug");
@@ -48,13 +49,26 @@ app.use(cookieParser());
 app.use(mongosanitze());
 app.use(xss_clean());
 
-app.use(hpp());
+app.use(
+  hpp({
+    whitelist: [
+      "duration",
+      "ratingsQuantity",
+      "ratingsAverage",
+      "maxGroupSize",
+      "difficulty",
+      "price",
+    ],
+  })
+);
+
+app.use(compression());
 
 const date = new Date().toString();
 // console.log(date);
 app.use((req, res, next) => {
   req.requestTime = date;
-  console.log(req.cookies);
+
   next();
 });
 

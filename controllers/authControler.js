@@ -39,10 +39,10 @@ exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body);
   const url = `${req.protocol}://${req.get("host")}/me`;
   await new Email(newUser, url).sendWelcome();
-  console.log("process...1");
+  
   // Sendgrid.mail();
   createSendToken(newUser, 201, res);
-  console.log("process...2");
+
 });
 
 exports.login = catchAsync(async (req, res, next) => {
