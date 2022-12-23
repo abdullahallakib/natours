@@ -17,7 +17,9 @@ const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
 const app = express();
 const compression = require("compression");
+const { default: mongoose } = require("mongoose");
 
+mongoose.set("strictQuery", true);
 // start express app
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
